@@ -1,0 +1,93 @@
+{
+  "schema_version": 2,
+  "arguments": {
+    "nu1": 0.5,
+    "nu2": 2.0,
+    "L": 10,
+    "H": 2,
+    "lam": 0.133838383838,
+    "alpha_min": 0.01,
+    "alpha_max": 1.0,
+    "n_alphas": 100,
+    "alpha_tol": 0.001,
+    "stability_tol": 0.0001,
+    "max_root_iter": 40,
+    "onset_step": null,
+    "max_onset_tries": 10,
+    "mem_start_alpha": null,
+    "seed": 0,
+    "n_mc": 1024,
+    "sampling": "sobol",
+    "max_iter": 200,
+    "tol": 1e-06,
+    "opt_tol": 1e-10,
+    "prox_max_iter": 120,
+    "init_q": 0.1,
+    "min_q_perp": 1e-07,
+    "branch_starts": 3,
+    "batch_size": 128,
+    "output_dir": "results_flipping_spike_phase_boundary/flipping_spike_phase_boundary_nu1_0.5_nu2_2.0_L10_H2",
+    "scan_diagnostics": true,
+    "lambda_grid": [
+      0.05,
+      0.15,
+      100.0
+    ],
+    "verbose": false
+  },
+  "boundaries": [
+    {
+      "transition": "PS_MEM",
+      "status": "stable_up_to_alpha_max",
+      "alpha_c": null,
+      "bracket_low": 1.0,
+      "bracket_high": null,
+      "alpha_error_bound": null,
+      "criterion": "lambda_edge-lambda",
+      "criterion_last": -0.005655594853371221,
+      "growth_last": 0.49594580309294545,
+      "se_error": 6.106226635438361e-15,
+      "message": "No sampled PS-to-MEM crossing; increase alpha-max or refine n-alphas. This does not assert stability against specialization."
+    },
+    {
+      "transition": "PS_SPEC",
+      "status": "crossing_found",
+      "alpha_c": 0.8963281249999999,
+      "bracket_low": 0.89625,
+      "bracket_high": 0.89640625,
+      "alpha_error_bound": 7.812499999998446e-05,
+      "criterion": "PS_SPEC_gain-1",
+      "criterion_last": 9.161860488182683e-05,
+      "growth_last": 1.0000916186048818,
+      "se_error": 3.831379657981415e-13,
+      "message": "",
+      "criterion_low": -3.111982612080677e-05,
+      "criterion_high": 0.00021437380968003517,
+      "growth_low": 0.9999688801738792,
+      "growth_high": 1.00021437380968,
+      "scaled_marginality_residual": 9.161860488182683e-05,
+      "growth_at_alpha_c": 1.0000916186048818
+    },
+    {
+      "transition": "MEM_SPEC",
+      "status": "ps_onset_not_found",
+      "alpha_c": null,
+      "bracket_low": null,
+      "bracket_high": null,
+      "alpha_error_bound": null,
+      "criterion": "MEM_SPEC_gain-1",
+      "criterion_last": null,
+      "growth_last": null,
+      "se_error": null,
+      "message": "No PS-connected MEM onset was resolved. Use mem-start-alpha only for a separately known MEM branch."
+    }
+  ],
+  "diagnostic_scan_failures": [],
+  "notes": [
+    "Local RS stability thresholds, not first-order free-entropy crossings.",
+    "alpha_error_bound is half the finite-sample bisection bracket, not a Gaussian integration error bound.",
+    "Continuation detects the first sampled stable-to-unstable crossing. Refine the scan to resolve narrow or reentrant intervals.",
+    "At finite n-mc, the noisy-field MEM onset can differ from the analytically averaged PS gain. Increase n-mc if onset initialization cannot be resolved.",
+    "PS and MEM backgrounds do not depend on nu2. nu2 multiplies the specialization response only."
+  ]
+}

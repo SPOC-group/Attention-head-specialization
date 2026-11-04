@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "model": "flipping_spike",
+  "arguments": {
+    "nu_total": 4.0,
+    "delta": 0.6121212121212122,
+    "L": 10,
+    "H": 2,
+    "lam": 0.2,
+    "alpha_min": 0.01,
+    "alpha_max": 6.1,
+    "n_alphas": 100,
+    "alpha_tol": 0.001,
+    "stability_tol": 0.0001,
+    "max_root_iter": 40,
+    "seed": 0,
+    "n_mc": 1024,
+    "sampling": "sobol",
+    "max_iter": 200,
+    "tol": 1e-06,
+    "opt_tol": 1e-10,
+    "prox_max_iter": 120,
+    "batch_size": 128,
+    "output_dir": "results_flipping_spike_phase_boundary_ratio/flipping_spike_phase_boundary_ratio_lambda_0.2_nutot_4.0_L10_H2",
+    "delta_grid": [
+      0.2,
+      1.0,
+      100.0
+    ],
+    "scan_diagnostics": false,
+    "verbose": false,
+    "nu1": 1.5515151515151513,
+    "nu2": 2.4484848484848487
+  },
+  "delta_definition": "nu2/(nu1+nu2)",
+  "boundaries": [
+    {
+      "transition": "PS_SPEC",
+      "status": "crossing_found",
+      "alpha_c": 1.7043098958333334,
+      "bracket_low": 1.7040696022727273,
+      "bracket_high": 1.7045501893939394,
+      "alpha_error_bound": 0.0002402935606060641,
+      "criterion": "PS_SPEC_gain-1",
+      "criterion_last": -2.2063770006797156e-05,
+      "growth_last": 0.9999779362299932,
+      "se_error": 1.028066520802895e-13,
+      "message": "",
+      "criterion_low": -0.00013967703822848065,
+      "criterion_high": 9.554674019263132e-05,
+      "growth_low": 0.9998603229617715,
+      "growth_high": 1.0000955467401926,
+      "growth_at_alpha_c": 0.9999779362299932,
+      "scaled_marginality_residual": 2.2063770006797156e-05,
+      "covariance_gain_at_alpha_c": 0.1578259696905097,
+      "v_perp_at_alpha_c": 5.092067250842635
+    }
+  ],
+  "diagnostic_scan_failures": [],
+  "notes": [
+    "Only the PS->SPEC local stability threshold is computed.",
+    "Interpreted as a phase boundary in the direct continuous-transition regime.",
+    "alpha_error_bound is half the root bracket, not a Gaussian integration error bound.",
+    "The first sampled stable-to-unstable crossing is refined. Narrow/reentrant intervals may require a finer scan.",
+    "Nonfinite values are null in JSON; inspect status. zero_signal means alpha_c=inf."
+  ]
+}

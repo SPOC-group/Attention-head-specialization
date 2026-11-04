@@ -1,0 +1,103 @@
+{
+  "schema_version": 2,
+  "arguments": {
+    "nu1": 0.5,
+    "nu2": 2.0,
+    "L": 10,
+    "H": 2,
+    "lam": 0.0510101010101,
+    "alpha_min": 0.01,
+    "alpha_max": 1.0,
+    "n_alphas": 100,
+    "alpha_tol": 0.001,
+    "stability_tol": 0.0001,
+    "max_root_iter": 40,
+    "onset_step": null,
+    "max_onset_tries": 10,
+    "mem_start_alpha": null,
+    "seed": 0,
+    "n_mc": 1024,
+    "sampling": "sobol",
+    "max_iter": 200,
+    "tol": 1e-06,
+    "opt_tol": 1e-10,
+    "prox_max_iter": 120,
+    "init_q": 0.1,
+    "min_q_perp": 1e-07,
+    "branch_starts": 3,
+    "batch_size": 128,
+    "output_dir": "results_flipping_spike_phase_boundary/flipping_spike_phase_boundary_nu1_0.5_nu2_2.0_L10_H2",
+    "scan_diagnostics": true,
+    "lambda_grid": [
+      0.05,
+      0.15,
+      100.0
+    ],
+    "verbose": false
+  },
+  "boundaries": [
+    {
+      "transition": "PS_MEM",
+      "status": "crossing_found",
+      "alpha_c": 0.03501953125,
+      "bracket_low": 0.035,
+      "bracket_high": 0.0350390625,
+      "alpha_error_bound": 1.9531249999999584e-05,
+      "criterion": "lambda_edge-lambda",
+      "criterion_last": 2.860586241403007e-06,
+      "growth_last": null,
+      "se_error": 1.254774062431352e-12,
+      "message": "The PS criterion uses the susceptibility fold; its gain is exactly one at the edge. A NaN PS gain beyond the edge means no stable transverse susceptibility exists.",
+      "criterion_low": -2.434274029988748e-07,
+      "criterion_high": 5.96161494376829e-06,
+      "growth_low": 0.9754093313337698,
+      "growth_high": null,
+      "scaled_marginality_residual": 5.6078819385921446e-05,
+      "growth_at_alpha_c": null,
+      "growth_at_edge": 0.9999999999999947,
+      "edge_specialization_gain": 0.12947466851632716,
+      "v_perp_at_edge": 20.197268879416356
+    },
+    {
+      "transition": "PS_SPEC",
+      "status": "preempted_by_PS_MEM",
+      "alpha_c": null,
+      "bracket_low": 0.035,
+      "bracket_high": 0.0350390625,
+      "alpha_error_bound": null,
+      "criterion": "PS_SPEC_gain-1",
+      "criterion_last": -0.8713714427005386,
+      "growth_last": 0.1286285572994615,
+      "se_error": 1.254774062431352e-12,
+      "message": "No mean-mode crossing before the real PS susceptibility branch ends. A resolved PS_MEM boundary is required to call this preemption."
+    },
+    {
+      "transition": "MEM_SPEC",
+      "status": "numerical_failure",
+      "alpha_c": null,
+      "bracket_low": null,
+      "bracket_high": null,
+      "alpha_error_bound": null,
+      "criterion": "MEM_SPEC_gain-1",
+      "criterion_last": null,
+      "growth_last": null,
+      "se_error": null,
+      "message": "MEM equations did not converge at alpha=0.48; relative residual=1.348e-03 (required 1.000e-06)."
+    }
+  ],
+  "diagnostic_scan_failures": [
+    {
+      "branch": "MEM",
+      "alpha": 0.48000000000000004,
+      "valid": false,
+      "message": "MEM equations did not converge at alpha=0.48; relative residual=1.348e-03 (required 1.000e-06)."
+    }
+  ],
+  "notes": [
+    "Local RS stability thresholds, not first-order free-entropy crossings.",
+    "alpha_error_bound is half the finite-sample bisection bracket, not a Gaussian integration error bound.",
+    "Continuation detects the first sampled stable-to-unstable crossing. Refine the scan to resolve narrow or reentrant intervals.",
+    "At finite n-mc, the noisy-field MEM onset can differ from the analytically averaged PS gain. Increase n-mc if onset initialization cannot be resolved.",
+    "PS and MEM backgrounds do not depend on nu2. nu2 multiplies the specialization response only."
+  ]
+}
